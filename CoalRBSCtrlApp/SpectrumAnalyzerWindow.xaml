@@ -1,0 +1,40 @@
+﻿<custom:DockableContent x:Class="CoalRBSCtrlApp.SpectrumAnalyzerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoalRBSCtrlApp"
+        mc:Ignorable="d"
+        xmlns:custom="clr-namespace:DockingLibrary;assembly=DockingLibrary"
+        Title="Спектроанализатор"
+        Height="600" Width="600"
+        Closing="SpcWindow_Closing">
+    <ScrollViewer Name="spcScrollViewer"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Cursor="Hand">
+        <Grid Name="spcWindowGrid"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Background="Black"
+              SizeChanged="SpcWindowGrid_SizeChanged">
+            <Grid.LayoutTransform>
+                <ScaleTransform ScaleX="{Binding ElementName=spcFrqScaleSlider, Path=Value, Mode=OneWay}"
+                                ScaleY="{Binding ElementName=spcAmplScaleSlider, Path=Value, Mode=OneWay}"
+                                CenterX="496" CenterY="496"/>
+            </Grid.LayoutTransform>
+            <Canvas Name="spcDataCanvas"
+                    Height="0" Width="0"
+                    Background="Transparent"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ClipToBounds="True" />
+            <Canvas Name="spcGridCanvas"
+                    Height="0" Width="0"
+                    Background="Transparent"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ClipToBounds="True" />
+        </Grid>
+    </ScrollViewer>
+</custom:DockableContent>

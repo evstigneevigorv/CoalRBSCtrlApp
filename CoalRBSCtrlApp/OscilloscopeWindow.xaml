@@ -1,0 +1,40 @@
+﻿<custom:DockableContent x:Class="CoalRBSCtrlApp.OscilloscopeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoalRBSCtrlApp"
+        mc:Ignorable="d"
+        xmlns:custom="clr-namespace:DockingLibrary;assembly=DockingLibrary"
+        Title="Осциллограф"
+        Height="600" Width="600"
+        Closing="oscWindow_Closing">
+    <ScrollViewer Name="oscScrollViewer"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Cursor="Hand">
+        <Grid Name="oscWindowGrid"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Background="Black"
+              SizeChanged="OscWindowGrid_SizeChanged">
+            <Grid.LayoutTransform>
+                <ScaleTransform ScaleX="{Binding ElementName=oscTimeScaleSlider, Path=Value, Mode=OneWay}"
+                                ScaleY="{Binding ElementName=oscAmplScaleSlider, Path=Value, Mode=OneWay}"
+                                CenterX="496" CenterY="496"/>
+            </Grid.LayoutTransform>
+            <Canvas Name="oscDataCanvas"
+                    Height="0" Width="0"
+                    Background="Transparent"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ClipToBounds="True" />
+            <Canvas Name="oscGridCanvas"
+                    Height="0" Width="0"
+                    Background="Transparent"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ClipToBounds="True" />
+        </Grid>
+    </ScrollViewer>
+</custom:DockableContent>
